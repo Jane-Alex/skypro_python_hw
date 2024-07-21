@@ -12,4 +12,4 @@ def month_to_season(m):
     elif m == 9 or m == 10 or m == 11:
         print("Осень")
 
-month_to_season(int(input("Введите номер месяца: ")))
+month_to_season(int(input("Введите номер месяца (число в диапазоне 1-12): ")))
