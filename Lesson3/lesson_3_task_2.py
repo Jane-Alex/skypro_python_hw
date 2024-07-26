@@ -10,4 +10,4 @@ smarthon5 = Smartphone("Sony", "Xperia", "+7909 111 74 85")
 catalog = [smarthon1, smarthon2, smarthon3, smarthon4, smarthon5]
 
 for s in catalog:
-    print(s(f"{self.brand} - {self.model}. {self.phone}"))
+    print((f"{s.brand} - {s.model}. {s.number}"))
