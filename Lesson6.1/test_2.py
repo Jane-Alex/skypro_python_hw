@@ -14,7 +14,8 @@ def test_calculator(driver):
     driver.find_element(By.XPATH, "//span[text() = '8']").click()
     driver.find_element(By.XPATH, "//span[text() = '=']").click()
 
-    WebDriverWait(driver, 46).until(EC.text_to_be_present_in_element((By.CLASS_NAME, "screen" ), "15"))
+    WebDriverWait(driver, 46).until(EC.text_to_be_present_in_element((
+        By.CLASS_NAME, "screen" ), "15"))
 
     result = driver.find_element(By.CLASS_NAME, "screen").text
 
