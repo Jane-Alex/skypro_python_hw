@@ -1,12 +1,11 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
-from data import*
 
 class MainPage:
-    def __init__(self, driver):
-        self.driver = driver
-        self.driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
+    def __init__(self, browser):
+        self.browser = browser
+        self.browser.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
 
     def find_fields(self):
         self._first_name = "first-name"
@@ -22,16 +21,16 @@ class MainPage:
         self._button = "button"
 
     def fill_fields(self):
-        self.driver.find_element(By.NAME, self._first_name).send_keys("Иван")
-        self.driver.find_element(By.NAME, self._last_name).send_keys("Петров")
-        self.driver.find_element(By.NAME, self._address).send_keys("Ленина, 55-3")
-        self.driver.find_element(By.NAME, self._email).send_keys("test@skypro.com")
-        self.driver.find_element(By.NAME, self._phone).send_keys("+7985899998787")
-        self.driver.find_element(By.NAME, self._zip_code).send_keys("")
-        self.driver.find_element(By.NAME, self._city).send_keys("Москва")
-        self.driver.find_element(By.NAME, self._country).send_keys("Россия")
-        self.driver.find_element(By.NAME, self._job_position).send_keys("QA")
-        self.driver.find_element(By.NAME, self._company).send_keys("SkyPro")
+        self.browser.find_element(By.ID, self._first_name).send_keys("Иван")
+        self.browser.find_element(By.ID, self._last_name).send_keys("Петров")
+        self.browser.find_element(By.ID, self._address).send_keys("Ленина, 55-3")
+        self.browser.find_element(By.ID, self._email).send_keys("test@skypro.com")
+        self.browser.find_element(By.ID, self._phone).send_keys("+7985899998787")
+        self.browser.find_element(By.ID, self._zip_code).send_keys("")
+        self.browser.find_element(By.ID, self._city).send_keys("Москва")
+        self.browser.find_element(By.ID, self._country).send_keys("Россия")
+        self.browser.find_element(By.ID, self._job_position).send_keys("QA")
+        self.browser.find_element(By.ID, self._company).send_keys("SkyPro")
 
     def click_button(self):
-        WebDriverWait(self.driver, 40, 0.1).until(EC.element_to_be_clickable(self._button)).click()
+        WebDriverWait(self.browser, 40, 0.1).until(EC.element_to_be_clickable(self._button)).click()
