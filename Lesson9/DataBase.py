@@ -9,7 +9,7 @@ class DataBase:
         'item_SELECT': text('select * from employee where company_id = :c_id and id =: e_id'),
         'maxID_SELECT': text('select MAX(id) from employee where company_id = :c_id'),
         'iten_DELETE': text('delete from employee where id = :id_delete'),
-        'item_UPDATE': text('update employee set first_name = :new_name where id = :employee_id'),
+        'item_UPDATE': text('update employee set first_name = :new_name where id = :employer_id'),
         'item_INSERT': text(
             'insert into employee(company_id, first_name, last_name, phone) values(:id, :name, :surname, :phone_num)')
     }
@@ -62,7 +62,7 @@ class DataBase:
     def get_list_employer(self, company_id: int):
         try:
             with self.db.connect() as connection:
-                result = connection.execute(self.query['list_SELECT'], parameters=dict(id=company_id))
+                result = connection.execute(self.query['list_SELECT'], parameters=dict(id=company_id)).fetchall()
                 return result
         except Exception as _ex:
             print("[INFO] Error - can't work with SQL", _ex)

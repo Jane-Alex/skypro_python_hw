@@ -11,7 +11,7 @@ def test_get_list_of_employers():
     db.create_company('Name_company', 'Nice') #создаем компанию
     max_id = db.last_company_id() #получаем id последней созданной компании
     print(max_id)
-    db.create_employer(max_id, "Mary", "Li", 89165553355) #добавляем сотрудника в компанию
+    db.create_employer(max_id, "Mary", "Li", "89165553355") #добавляем сотрудника в компанию
     #получаем список сотрудников из последней созданной компании БД/API
     db_employer_list = db.get_list_employer(max_id)
     api_employer_list = api.get_list(max_id)
@@ -25,7 +25,7 @@ def test_get_list_of_employers():
 def test_assertion_data():
     db.create_company('Name_company_2', 'Good')
     max_id = db.last_company_id()
-    db.create_employer(max_id, "Mary", "Li", 89165553355)
+    db.create_employer(max_id, "Mary", "Li", "89165553355")
     employer_id = db.get_employer_id(max_id)
     get_api_info = (api.get_info(employer_id)).json()
     assert get_api_info["firstName"] == "Mary"
@@ -37,7 +37,7 @@ def test_assertion_data():
 def test_add_new_employer():
     db.create_company('Name_company_3', 'Nice') #создаем компанию
     max_id = db.last_company_id() #получаем id последней созданной компании
-    db.create_employer(max_id, "Mary", "Li", 89165553355)
+    db.create_employer(max_id, "Mary", "Li", "89165553355")
     response = (api.get_list(max_id))[0]
     employer_id = response["id"]
     assert response["companyId"] == max_id
@@ -50,7 +50,7 @@ def test_add_new_employer():
 def test_update_user_info():
     db.create_company('Name_company_4', 'Nice')
     max_id = db.last_company_id()
-    db.create_employer(max_id, "Mary", "Li", 89165553355)
+    db.create_employer(max_id, "Mary", "Li", "89165553355")
     employer_id = db.get_employer_id(max_id)
     db.update_employer_info("Jack", employer_id)
     get_api_info = (api.get_info(employer_id)).json()
